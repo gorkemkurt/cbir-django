@@ -6,9 +6,6 @@ from cbirApp.image_retrieval import get_similar_images
 
 
 def image_list(request):
-    # MAX_OBJECTS = 20
-    # polls = Poll.objects.all()[:MAX_OBJECTS]
-    data = {"results": ["question", "created_by__username", "pub_date"]}
     return JsonResponse(get_similar_images(), safe=False)
 
 
@@ -19,7 +16,7 @@ def dest_image_view(request):
 
         if form.is_valid():
             form = form.save()
-            return JsonResponse(get_similar_images(form.dest_image), safe=False)
+            return JsonResponse(get_similar_images(form.dest_image, form.feature_extraction_method), safe=False)
     else:
         form = DestImageForm()
     return JsonResponse("OK", safe=False)

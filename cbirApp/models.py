@@ -17,6 +17,7 @@ class Images(models.Model):
 class DestImage(models.Model):
     name = models.CharField(max_length=50)
     dest_image = models.ImageField(upload_to='images/')
+    feature_extraction_method = models.CharField(max_length=1)
 
     class Meta:
         db_table = "dest_images"
